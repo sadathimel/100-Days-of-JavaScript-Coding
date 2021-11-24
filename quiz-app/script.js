@@ -49,9 +49,11 @@ const b_text = document.getElementById('b_text');
 const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 
+const submitBtn = document.getElementById('submit');
+
 let currentQuiz = 0;
 
-loadQuiz();
+
 
 function loadQuiz(){
     const currentQuizData = quizData[currentQuiz];
@@ -62,4 +64,11 @@ function loadQuiz(){
     d_text.innerText = currentQuizData.d;
     
 }
-submitBtn
+submitBtn.addEventListener("click", ()=>{
+    currentQuiz++;
+    if(currentQuiz < quizData.length){
+        loadQuiz();
+    }else {
+        alert("you finished! Get yourself an orange lemonade")
+    }
+})
