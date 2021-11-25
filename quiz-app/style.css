@@ -47,6 +47,10 @@ ul {
     padding: 0;
 }
 
+ul li label{
+    cursor: pointer;
+}
+
 button{
     background-color: #6c25be;
     color: white;
