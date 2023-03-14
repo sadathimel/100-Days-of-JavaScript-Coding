@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change The Background Color By Clicking</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        /* background-color: black; */
+      }
+      .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* background-color: #000; */
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-shadow: -2px -2px 0 #ffffff, 2px -2px #ffffff, -2px 2px #ffffff,
+          2px 2px #ffffff;
+      }
+      button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        outline: 1px solid #fff;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+        margin: 0.5rem;
+      }
+      button:hover {
+        background-color: #ebeaea;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text1">Change The Background Color By Clicking</h1>
+      <button id="changeBtn">Change Color</button>
+      <button id="copyBtn">copy</button>
+      <input type="text" value="rgb(142, 25, 153)" id="colorCode" />
+    </div>
+  </body>
+  <script>
+    /**
+     * Project Requirements:
+     * 1. Click the button
+     * 2. Change the background color by generating random rgb color
+     */
+    let container = document.querySelector(".container");
+    let changeBtn = document.getElementById("changeBtn");
+    let copyBtn = document.getElementById("copyBtn");
+    let colorCode = document.getElementById("colorCode");
+    window.onload = () => {
+      main();
+    };
+
+    function main() {
+      changeBtn.addEventListener("click", () => {
+        container.style.backgroundColor = generateRGBColor();
+        changeBtn.style.color = generateRGBColor();
+        colorCode.value = generateRGBColor();
+      });
+      copyBtn.addEventListener("click", () => {
+        myFunction();
+      });
+    }
+
+    function generateRGBColor() {
+      const R = Math.floor(Math.random() * 255);
+      const G = Math.floor(Math.random() * 255);
+      const B = Math.floor(Math.random() * 255);
+      return `rgb(${R}, ${G}, ${B})`;
+    }
+
+    function myFunction() {
+      navigator.clipboard.writeText(colorCode.value);
+      alert("Copied the text: " + colorCode.value);
+    }
+  </script>
 </html>
