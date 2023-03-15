@@ -48,7 +48,8 @@
   <body>
     <div class="container">
       <h1 class="text1">Change The Background Color By Clicking</h1>
-      <button id="changeBtn">Change Color</button>
+      <button id="changeBtn">Change Color RGB</button>
+      <button id="changeBtnHex">Change Color Hex</button>
       <button id="copyBtn">copy</button>
       <input type="text" value="rgb(142, 25, 153)" id="colorCode" />
     </div>
@@ -61,6 +62,7 @@
      */
     let container = document.querySelector(".container");
     let changeBtn = document.getElementById("changeBtn");
+    let changeBtnHex = document.getElementById("changeBtnHex");
     let copyBtn = document.getElementById("copyBtn");
     let colorCode = document.getElementById("colorCode");
     window.onload = () => {
@@ -73,6 +75,11 @@
         changeBtn.style.color = generateRGBColor();
         colorCode.value = generateRGBColor();
       });
+      changeBtnHex.addEventListener("click", ()=>{
+        container.style.backgroundColor = generateHexColor();
+        changeBtnHex.style.color = generateHexColor();
+        colorCode.value = generateHexColor();
+      })
       copyBtn.addEventListener("click", () => {
         myFunction();
       });
@@ -83,6 +90,11 @@
       const G = Math.floor(Math.random() * 255);
       const B = Math.floor(Math.random() * 255);
       return `rgb(${R}, ${G}, ${B})`;
+    }
+
+    function generateHexColor() {
+      const hex = Math.floor(Math.random() * 16777215).toString(16);
+      return `#${hex}`;
     }
 
     function myFunction() {
