@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Flipper</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .wrapper {
+        background-color: rgb(43, 72, 97);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+      }
+      .buttonDiv {
+        width: 150px;
+        height: 60px;
+        border-radius: 10%;
+        margin: auto;
+      }
+      button {
+        background-color: white;
+        width: 150px;
+        height: 60px;
+        border-radius: 10px;
+        color: black;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid red;
+        user-select: none;
+      }
+      button:hover {
+        background-color: black;
+        color: white;
+        border: 1px solid black;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="buttonDiv">
+        <button class="buttonClass">Change Background</button>
+        <p class="innerTextP"></p>
+      </div>
+    </div>
+
+    <script>
+      let wrapper = document.querySelector(".wrapper");
+      let buttonDiv = document.querySelector(".buttonDiv");
+      let buttonClass = document.querySelector(".buttonClass");
+      let innerTextP = document.querySelector(".innerTextP");
+
+      // let colors = ['#000','red','white','green','black'];
+      let lengthRGB = 255;
+
+      buttonClass.addEventListener("click", function () {
+        genarateNumber();
+      });
+
+      function genarateNumber(r, g, b) {
+        let R = Math.floor(Math.random() * lengthRGB);
+        let G = Math.floor(Math.random() * lengthRGB);
+        let B = Math.floor(Math.random() * lengthRGB);
+
+        wrapper.style.backgroundColor = `rgb(${R},${G},${B})`;
+        buttonClass.innerText = `rgb(${R},${G},${B})`;
+        buttonClass.style.color = `rgb(${R},${G},${B})`;
+      }
+    </script>
+  </body>
+</html>
